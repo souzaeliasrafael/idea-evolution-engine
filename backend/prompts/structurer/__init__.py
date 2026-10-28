@@ -1,0 +1,2 @@
+"""Idea Structurer prompt versions."""
+

@@ -1,0 +1,27 @@
+.env
+.venv/
+*.egg-info/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.pytest-*/
+.coverage
+htmlcov/
+*.db
+*.sqlite3
+.idea/
+.vscode/
+node_modules/
+.next/
+npm-debug.log*
+playwright-report/
+test-results/
+
+# Local runtime data: experiment reports reference real projects and local paths
+backend/work/
+.test-tmp*/
+.pytest-tmp*/
+iee*.db
+*.tsbuildinfo
+.env.*
+!.env.example

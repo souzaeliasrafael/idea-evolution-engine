@@ -1,0 +1,46 @@
+[build-system]
+requires = ["setuptools>=75"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "idea-evolution-engine"
+version = "1.0.0"
+description = "A bounded, state-oriented idea evaluation workflow"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+    "aiosqlite>=0.20,<1",
+    "alembic>=1.14,<2",
+    "fastapi>=0.115,<1",
+    "httpx>=0.28,<1",
+    "pydantic-settings>=2.7,<3",
+    "sqlalchemy[asyncio]>=2.0.36,<3",
+    "truststore>=0.10,<1",
+    "uvicorn[standard]>=0.34,<1",
+]
+
+[project.optional-dependencies]
+test = [
+    "pytest>=8.3,<9",
+    "pytest-asyncio>=0.25,<1",
+]
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["app*", "prompts*"]
+
+[tool.setuptools.package-data]
+"prompts.structurer" = ["*.md"]
+"prompts.builder" = ["*.md"]
+"prompts.critic" = ["*.md"]
+"prompts.researcher" = ["*.md"]
+"prompts.judge" = ["*.md"]
+"prompts.opportunity_scout" = ["*.md"]
+"prompts.idea_generator" = ["*.md"]
+"prompts.opportunity_researcher" = ["*.md"]
+"prompts.portfolio_judge" = ["*.md"]
+
+[tool.pytest.ini_options]
+addopts = "-q"
+asyncio_mode = "auto"
+testpaths = ["tests"]

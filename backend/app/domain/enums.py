@@ -1,0 +1,242 @@
+from enum import Enum
+
+
+class ProjectStatus(str, Enum):
+    DRAFT = "DRAFT"
+    STRUCTURING = "STRUCTURING"
+    RESEARCHING = "RESEARCHING"
+    DEBATING = "DEBATING"
+    VALIDATING = "VALIDATING"
+    PIVOTING = "PIVOTING"
+    AWAITING_CONFIRMATION = "AWAITING_CONFIRMATION"
+    APPROVED = "APPROVED"
+    DISCARDED = "DISCARDED"
+    BUILDING = "BUILDING"
+
+
+class AgentType(str, Enum):
+    STRUCTURER = "STRUCTURER"
+    BUILDER = "BUILDER"
+    RESEARCHER = "RESEARCHER"
+    CRITIC = "CRITIC"
+    JUDGE = "JUDGE"
+    IMPROVER = "IMPROVER"
+    PRODUCT_ARCHITECT = "PRODUCT_ARCHITECT"
+    SOLUTION_ARCHITECT = "SOLUTION_ARCHITECT"
+    TECHNICAL_CRITIC = "TECHNICAL_CRITIC"
+    ROADMAP_PLANNER = "ROADMAP_PLANNER"
+
+
+class DiscoveryAgentType(str, Enum):
+    OPPORTUNITY_SCOUT = "OPPORTUNITY_SCOUT"
+    IDEA_GENERATOR = "IDEA_GENERATOR"
+    OPPORTUNITY_RESEARCHER = "OPPORTUNITY_RESEARCHER"
+    PORTFOLIO_JUDGE = "PORTFOLIO_JUDGE"
+
+
+class DiscoveryCampaignStatus(str, Enum):
+    DRAFT = "DRAFT"
+    RUNNING = "RUNNING"
+    COMPLETED = "COMPLETED"
+    BUDGET_STOPPED = "BUDGET_STOPPED"
+    FAILED = "FAILED"
+    CANCELLED = "CANCELLED"
+
+
+class OpportunityStatus(str, Enum):
+    GENERATED = "GENERATED"
+    SHORTLISTED = "SHORTLISTED"
+    FINALIST = "FINALIST"
+    REJECTED = "REJECTED"
+    SELECTED = "SELECTED"
+
+
+class OpportunityFeedbackStatus(str, Enum):
+    PENDING = "PENDING"
+    APPROVED = "APPROVED"
+    REJECTED = "REJECTED"
+
+
+class DiscoveryMemoryMode(str, Enum):
+    NEW_ONLY = "NEW_ONLY"
+    BALANCED = "BALANCED"
+    IMPROVE_APPROVED = "IMPROVE_APPROVED"
+
+
+class OpportunityCustomerType(str, Enum):
+    ANY = "ANY"
+    B2C = "B2C"
+    B2B = "B2B"
+
+
+class OpportunityRevenuePattern(str, Enum):
+    RECURRING = "RECURRING"
+    REPEAT = "REPEAT"
+    ONE_OFF = "ONE_OFF"
+
+
+class CommercialValidationStatus(str, Enum):
+    UNTESTED = "UNTESTED"
+    PLANNED = "PLANNED"
+    RUNNING = "RUNNING"
+    VALIDATED = "VALIDATED"
+    INVALIDATED = "INVALIDATED"
+    INCONCLUSIVE = "INCONCLUSIVE"
+
+
+class RiskTolerance(str, Enum):
+    LOW = "LOW"
+    MEDIUM = "MEDIUM"
+    HIGH = "HIGH"
+
+
+class ImprovementCauseType(str, Enum):
+    CONCEPT_WEAKNESS = "CONCEPT_WEAKNESS"
+    EVIDENCE_GAP = "EVIDENCE_GAP"
+    FEASIBILITY_RISK = "FEASIBILITY_RISK"
+    MARKET_RISK = "MARKET_RISK"
+    EXECUTION_RISK = "EXECUTION_RISK"
+    REGULATORY_RISK = "REGULATORY_RISK"
+
+
+class ImprovementEffort(str, Enum):
+    LOW = "LOW"
+    MEDIUM = "MEDIUM"
+    HIGH = "HIGH"
+
+
+class DevelopmentBlueprintStatus(str, Enum):
+    RUNNING = "RUNNING"
+    COMPLETED = "COMPLETED"
+    FAILED = "FAILED"
+
+
+class CriticismSeverity(str, Enum):
+    CRITICAL = "CRITICAL"
+    HIGH = "HIGH"
+    MEDIUM = "MEDIUM"
+    LOW = "LOW"
+
+
+class DecisionType(str, Enum):
+    REFINE = "REFINE"
+    RESEARCH = "RESEARCH"
+    TEST = "TEST"
+    PIVOT = "PIVOT"
+    APPROVE = "APPROVE"
+    DISCARD = "DISCARD"
+
+
+class RoundStatus(str, Enum):
+    RUNNING = "RUNNING"
+    COMPLETED = "COMPLETED"
+    FAILED = "FAILED"
+    CANCELLED = "CANCELLED"
+
+
+class OrchestratorStopReason(str, Enum):
+    TERMINAL_DECISION = "TERMINAL_DECISION"
+    AWAITING_CONFIRMATION = "AWAITING_CONFIRMATION"
+    AWAITING_TEST = "AWAITING_TEST"
+    BUDGET_LIMIT_REACHED = "BUDGET_LIMIT_REACHED"
+    MAX_ROUNDS_REACHED = "MAX_ROUNDS_REACHED"
+    USER_CANCELLED = "USER_CANCELLED"
+
+
+class WorkflowExecutionStatus(str, Enum):
+    IDLE = "IDLE"
+    RUNNING = "RUNNING"
+    CANCELLING = "CANCELLING"
+
+
+class BillingCostSource(str, Enum):
+    PROVIDER_API = "PROVIDER_API"
+    MANUAL = "MANUAL"
+
+
+class BillingSyncStatus(str, Enum):
+    COMPLETED = "COMPLETED"
+    FAILED = "FAILED"
+
+
+class HypothesisStatus(str, Enum):
+    OPEN = "OPEN"
+    PARTIAL = "PARTIAL"
+    VALIDATED = "VALIDATED"
+    REJECTED = "REJECTED"
+
+
+class EpistemicClassification(str, Enum):
+    FACT = "FACT"
+    ASSUMPTION = "ASSUMPTION"
+    INFERENCE = "INFERENCE"
+    OPINION = "OPINION"
+    UNKNOWN = "UNKNOWN"
+
+
+class EvidenceDirection(str, Enum):
+    SUPPORT = "SUPPORT"
+    CONTRADICT = "CONTRADICT"
+    NEUTRAL = "NEUTRAL"
+
+
+class HypothesisOrigin(str, Enum):
+    USER = "USER"
+    STRUCTURER = "STRUCTURER"
+    BUILDER = "BUILDER"
+    RESEARCHER = "RESEARCHER"
+
+
+class EvidenceOrigin(str, Enum):
+    USER = "USER"
+    RESEARCHER = "RESEARCHER"
+    EXPERIMENT = "EXPERIMENT"
+
+
+class HumanReviewStatus(str, Enum):
+    NOT_REQUIRED = "NOT_REQUIRED"
+    PENDING = "PENDING"
+    ACCEPTED = "ACCEPTED"
+    OVERRIDDEN = "OVERRIDDEN"
+
+
+class HumanReviewAction(str, Enum):
+    ACCEPT_RECOMMENDATION = "ACCEPT_RECOMMENDATION"
+    CONTINUE_ANYWAY = "CONTINUE_ANYWAY"
+    MANUAL_PIVOT = "MANUAL_PIVOT"
+
+
+class ExperimentStatus(str, Enum):
+    PLANNED = "PLANNED"
+    RUNNING = "RUNNING"
+    COMPLETED = "COMPLETED"
+    CANCELLED = "CANCELLED"
+
+
+class ExperimentOutcome(str, Enum):
+    SUCCESS = "SUCCESS"
+    FAILURE = "FAILURE"
+    INCONCLUSIVE = "INCONCLUSIVE"
+
+
+class ExperimentReassessmentStatus(str, Enum):
+    NOT_REQUESTED = "NOT_REQUESTED"
+    PENDING = "PENDING"
+    COMPLETED = "COMPLETED"
+    FAILED = "FAILED"
+    SKIPPED_BUDGET = "SKIPPED_BUDGET"
+
+
+class ScoreCriterion(str, Enum):
+    REAL_PROBLEM = "REAL_PROBLEM"
+    PROBLEM_INTENSITY = "PROBLEM_INTENSITY"
+    IDENTIFIABLE_USERS = "IDENTIFIABLE_USERS"
+    MARKET = "MARKET"
+    DIFFERENTIATION = "DIFFERENTIATION"
+    TECHNICAL_FEASIBILITY = "TECHNICAL_FEASIBILITY"
+    ECONOMIC_FEASIBILITY = "ECONOMIC_FEASIBILITY"
+    DISTRIBUTION = "DISTRIBUTION"
+    DEFENSIBILITY = "DEFENSIBILITY"
+    LEGAL_REGULATORY_RISK = "LEGAL_REGULATORY_RISK"
+    TESTABLE_MVP = "TESTABLE_MVP"
+    SCALABILITY = "SCALABILITY"
