@@ -11,6 +11,23 @@
 The flowchart is in Portuguese; each numbered step is explained in
 [README.pt-BR.md](README.pt-BR.md#como-funciona).
 
+## Screenshots
+
+Captured with fictional demo data in mock mode (no real AI calls), so the `mock` provider and
+example sources are shown. The interface is in Portuguese.
+
+| Projects dashboard | Discovery campaign ranking |
+|---|---|
+| ![Projects dashboard](docs/images/telas/01-painel.png) | ![Discovery campaign](docs/images/telas/02-descoberta.png) |
+
+| Project overview | Score evolution per round |
+|---|---|
+| ![Project overview](docs/images/telas/03-projeto.png) | ![Score evolution](docs/images/telas/04-evolucao.png) |
+
+| Hypothesis register | Financial panel |
+|---|---|
+| ![Hypotheses](docs/images/telas/05-hipoteses.png) | ![Financial panel](docs/images/telas/06-financeiro.png) |
+
 Idea Evolution Engine (IEE) is designed to turn a raw idea into a traceable,
 evidence-aware decision through a bounded, state-oriented workflow.
 

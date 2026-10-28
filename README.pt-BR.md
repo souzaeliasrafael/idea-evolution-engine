@@ -53,6 +53,37 @@ descartar.
 Toda execução tem teto de custo de IA e limite de rodadas. Três melhorias seguidas de menos de
 3 pontos marcam o projeto como estagnado.
 
+## Telas
+
+> Prints feitos com dados fictícios de demonstração, gerados no modo de teste (sem chamadas
+> reais de IA). Por isso aparecem o provedor `mock` e fontes de exemplo.
+
+**Painel de projetos:** score, confiança, rodada e custo de cada ideia.
+
+![Painel de projetos](docs/images/telas/01-painel.png)
+
+**Campanha de descoberta:** ranking das oportunidades, filtros eliminatórios, Market Reality
+Score e a leitura do Portfolio Judge.
+
+![Campanha de descoberta](docs/images/telas/02-descoberta.png)
+
+**Projeto:** resumo da ideia, teto de custo e o bloqueio enquanto um experimento está planejado.
+
+![Projeto](docs/images/telas/03-projeto.png)
+
+**Evolução por rodada:** score e confiança de cada rodada, decisão atual do Judge e o histórico
+de agentes com custo e tokens.
+
+![Evolução do score](docs/images/telas/04-evolucao.png)
+
+**Hipóteses:** registro com impacto, confiança, prioridade e status de cada hipótese.
+
+![Hipóteses](docs/images/telas/05-hipoteses.png)
+
+**Financeiro:** custo estimado separado do custo conciliado, tokens e orçamentos.
+
+![Financeiro](docs/images/telas/06-financeiro.png)
+
 ## O que o projeto faz
 
 O IEE tem três módulos que podem ser usados juntos ou separados.
