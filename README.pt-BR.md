@@ -7,6 +7,52 @@ com evidências rastreáveis, custo controlado e decisão humana nos pontos crí
 de um texto cru e chega a uma decisão auditável: aprovar, pivotar, testar, pesquisar mais ou
 descartar.
 
+## Como funciona
+
+![Fluxograma do Idea Evolution Engine](docs/images/fluxo-idea-evolution-engine.png)
+
+**Etapa 1 · Descoberta (opcional)**
+
+1. **Perfil do fundador:** você informa habilidades, capital, horas por semana, meta de receita,
+   mercados preferidos, exclusões e tolerância a risco.
+2. **Sinais de dor:** o Opportunity Scout busca na web problemas reais e sinais de que alguém já
+   paga para resolvê-los, sempre com a fonte.
+3. **Geração de ideias:** o Idea Generator transforma esses sinais em 3 a 5 ideias para o seu
+   perfil e nunca repete uma ideia que você rejeitou.
+4. **Filtros e pesquisa:** ideias duplicadas ou que violam suas restrições são eliminadas; as
+   melhores são pesquisadas e recebem o Market Reality Score.
+5. **Ranking:** o Portfolio Judge compara as finalistas. Você pode aprovar, rejeitar com motivo
+   ou registrar resultados de validação comercial.
+
+**Etapa 2 · Projeto**
+
+6. **Projeto V0:** a oportunidade escolhida, ou uma ideia sua, vira projeto. Uma ideia sua é
+   organizada pelo Structurer; uma oportunidade já chega estruturada, com hipóteses e evidências.
+
+**Etapa 3 · Avaliação em rodadas**
+
+7. **Pesquisa:** o Researcher escolhe uma hipótese aberta e busca evidências com fonte.
+8. **Melhoria:** o Builder cria uma nova versão da ideia; as versões anteriores nunca mudam.
+9. **Crítica:** o Critic aponta falhas testáveis, cada uma com a condição que a derrubaria.
+10. **Verificação:** um segundo Researcher confere as críticas e um segundo Builder revisa o
+    conceito com o que se confirmou.
+11. **Julgamento:** o Judge avalia 12 critérios e o código calcula a nota de 0 a 100, com
+    confiança, bloqueios e próximos passos.
+
+**Etapa 4 · Decisão**
+
+12. **Seguir evoluindo:** se a decisão é refinar ou pesquisar mais, o Improver monta um plano e
+    uma nova rodada começa no passo 7.
+13. **Testar:** o sistema cria um experimento e pausa. O resultado vira evidência e permite uma
+    reavaliação do Judge.
+14. **Você decide:** aprovar, pivotar ou descartar só acontece com a sua confirmação.
+15. **Blueprint técnico:** gera requisitos, opções de arquitetura, revisão técnica e roadmap.
+    É opcional e pode ser pedido a qualquer momento depois do passo 6; o momento natural é
+    depois de aprovar.
+
+Toda execução tem teto de custo de IA e limite de rodadas. Três melhorias seguidas de menos de
+3 pontos marcam o projeto como estagnado.
+
 ## O que o projeto faz
 
 O IEE tem três módulos que podem ser usados juntos ou separados.

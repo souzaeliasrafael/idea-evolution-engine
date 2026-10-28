@@ -6,6 +6,11 @@
 > [PROVIDERS.md](PROVIDERS.md) (providers, models and costs) ·
 > [PROJECT_RULES.md](PROJECT_RULES.md) (engineering rules)
 
+![How the Idea Evolution Engine works](docs/images/fluxo-idea-evolution-engine.png)
+
+The flowchart is in Portuguese; each numbered step is explained in
+[README.pt-BR.md](README.pt-BR.md#como-funciona).
+
 Idea Evolution Engine (IEE) is designed to turn a raw idea into a traceable,
 evidence-aware decision through a bounded, state-oriented workflow.
 
