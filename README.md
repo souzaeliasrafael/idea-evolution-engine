@@ -53,32 +53,6 @@ The OpenAI Responses adapter sends each agent's Pydantic JSON Schema as a
 strict Structured Output contract. Prompt instructions remain editable and
 versioned independently from that protected output contract.
 
-## Architecture
-
-The implemented request path is:
-
-```text
-Next.js UI -> FastAPI router -> individual agent services -------------+
-       |                                                               |
-       +-> bounded Orchestrator -> Researcher -> Builder -> Critic
-                    |                    ^           |          |
-                    |                    +-- Researcher <-+     |
-                    |                            |               |
-                    +-> Round ------------> Builder -> Judge -> SQLAlchemy
-                                                   |
-                                                 SQLite
-                                                   |
-                         Hypotheses + Evidence <- LLMRouter -> LLMProvider
-                                                   |
-                                Human Review <-+-> Experiment
-                                                   |
-                                              Score Engine
-```
-
-HTTP contracts use Pydantic schemas. Project states use an explicit domain enum.
-Alembic owns the application schema. Modules do not depend on any LLM vendor.
-The implemented design and deferred risks are documented in
-[`PROJECT_SPEC.md`](PROJECT_SPEC.md).
 
 ## Requirements
 
