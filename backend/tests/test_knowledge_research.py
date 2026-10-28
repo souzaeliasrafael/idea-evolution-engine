@@ -40,6 +40,11 @@ def concept_payload() -> dict[str, object]:
     }
 
 
+def builder_concept(concept: dict[str, object]) -> dict[str, object]:
+    """Builder concepts omit raw_idea; the server preserves the original one."""
+    return {key: value for key, value in concept.items() if key != "raw_idea"}
+
+
 def builder_payload() -> dict[str, object]:
     return {
         "improvements": ["Narrowed the workflow"],
@@ -47,7 +52,7 @@ def builder_payload() -> dict[str, object]:
         "unresolved_problems": ["Demand"],
         "new_hypotheses": ["Product teams will complete a weekly evaluation"],
         "proposed_changes": ["Focus on product teams"],
-        "new_concept": concept_payload(),
+        "new_concept": builder_concept(concept_payload()),
     }
 
 
@@ -257,6 +262,14 @@ async def test_researcher_cites_only_ledger_evidence_and_persists_run(
             },
         )
         assert response.status_code == 201
+    # The Researcher focuses each call on one open hypothesis, preferring the
+    # least-investigated one. Close the others so H002 becomes the target.
+    for other_id in ("H001", "H003"):
+        closed = await client.patch(
+            f"/projects/{project_id}/hypotheses/{other_id}",
+            json={"status": "VALIDATED"},
+        )
+        assert closed.status_code == 200
     provider = MockLLMProvider(
         [
             json.dumps(
@@ -278,6 +291,7 @@ async def test_researcher_cites_only_ledger_evidence_and_persists_run(
     assert response.json()["evidence"] == ["E001"]
     assert response.json()["contradictory_evidence"] == ["E002"]
     assert provider.calls[0].role == "RESEARCHER"
+    assert provider.calls[0].input_data["research_target"]["id"] == "H002"
     assert [item["id"] for item in provider.calls[0].input_data["evidence"]] == [
         "E001",
         "E002",

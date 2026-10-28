@@ -73,6 +73,11 @@ def concept_payload(*, solution: str = "A bounded workflow.") -> dict[str, objec
     }
 
 
+def builder_concept(concept: dict[str, object]) -> dict[str, object]:
+    """Builder concepts omit raw_idea; the server preserves the original one."""
+    return {key: value for key, value in concept.items() if key != "raw_idea"}
+
+
 def builder_payload(round_number: int) -> dict[str, object]:
     return {
         "improvements": [f"Round {round_number} improvement"],
@@ -80,7 +85,9 @@ def builder_payload(round_number: int) -> dict[str, object]:
         "unresolved_problems": ["Willingness to pay"],
         "new_hypotheses": [],
         "proposed_changes": [f"Create version for round {round_number}"],
-        "new_concept": concept_payload(solution=f"Concept version {round_number}"),
+        "new_concept": builder_concept(
+            concept_payload(solution=f"Concept version {round_number}")
+        ),
     }
 
 
@@ -92,7 +99,9 @@ def critic_payload() -> dict[str, object]:
                 "severity": "HIGH",
                 "claim": "The target users may not pay.",
                 "reason": "No purchasing evidence is available.",
-                "affected_hypotheses": ["H-WTP"],
+                # A general criticism (no register ID) reaches every Researcher
+                # target; one naming specific IDs only reaches matching targets.
+                "affected_hypotheses": [],
                 "evidence_needed": "Pricing interviews.",
                 "condition_that_refutes_criticism": "Five paid pilot commitments.",
             }

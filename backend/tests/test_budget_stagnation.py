@@ -55,6 +55,11 @@ def concept_payload() -> dict[str, object]:
     }
 
 
+def builder_concept(concept: dict[str, object]) -> dict[str, object]:
+    """Builder concepts omit raw_idea; the server preserves the original one."""
+    return {key: value for key, value in concept.items() if key != "raw_idea"}
+
+
 def builder_payload() -> dict[str, object]:
     return {
         "improvements": ["Focused scope"],
@@ -62,7 +67,7 @@ def builder_payload() -> dict[str, object]:
         "unresolved_problems": ["Demand"],
         "new_hypotheses": [],
         "proposed_changes": ["Focus scope"],
-        "new_concept": concept_payload(),
+        "new_concept": builder_concept(concept_payload()),
     }
 
 

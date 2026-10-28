@@ -224,11 +224,10 @@ Os testes do backend usam SQLite em memória e nunca chamam APIs externas.
   seção *Roadmap* do [README.md](README.md)).
 - Módulo de descoberta com memória de feedback, validação comercial e passagem para projeto
   (migração 0024).
-- **Pendência conhecida:** na última verificação, 124 de 138 testes do backend passaram. Os 14
-  que falham estão em `test_orchestration`, `test_builder_critic`, `test_budget_stagnation`,
-  `test_knowledge_research` e `test_migrations` e ainda esperam o comportamento anterior às
-  últimas mudanças (por exemplo, o teste de migração não conhece a tabela
-  `discovery_handoffs`). Atualizá-los é o próximo passo.
+- Os 138 testes do backend passam. Eles foram atualizados para três mudanças de comportamento
+  recentes: o Builder não devolve mais `raw_idea` (o servidor preserva a ideia original), cada
+  chamada do Researcher foca uma única hipótese aberta e a migração 0024 criou a tabela
+  `discovery_handoffs`.
 
 ## Documentação
 

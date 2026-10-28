@@ -49,6 +49,7 @@ def test_migrations_create_current_schema(tmp_path: Path, monkeypatch) -> None:
             "opportunity_candidates",
             "discovery_agent_runs",
             "discovery_prompt_versions",
+            "discovery_handoffs",
         }
         assert {column["name"] for column in inspector.get_columns("projects")} == {
             "id",

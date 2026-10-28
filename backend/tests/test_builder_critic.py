@@ -43,17 +43,29 @@ def concept_payload(
     }
 
 
-def builder_payload(*, raw_idea: str = "A raw idea") -> dict[str, object]:
+def builder_concept_payload(
+    *, solution: str = "A bounded workflow."
+) -> dict[str, object]:
+    """Builder concepts omit raw_idea; the server preserves the original one."""
+    concept = concept_payload(solution=solution)
+    concept.pop("raw_idea")
+    return concept
+
+
+def builder_payload(*, raw_idea: str | None = None) -> dict[str, object]:
+    new_concept = builder_concept_payload(
+        solution="A focused, bounded product-discovery workflow."
+    )
+    if raw_idea is not None:
+        # Only used to prove that a Builder trying to rewrite raw_idea is rejected.
+        new_concept["raw_idea"] = raw_idea
     return {
         "improvements": ["Narrowed the target workflow"],
         "problems_solved": ["Unclear initial scope"],
         "unresolved_problems": ["Willingness to pay"],
         "new_hypotheses": ["Product teams need an explicit evaluation gate"],
         "proposed_changes": ["Focus the MVP on product discovery"],
-        "new_concept": concept_payload(
-            raw_idea=raw_idea,
-            solution="A focused, bounded product-discovery workflow.",
-        ),
+        "new_concept": new_concept,
     }
 
 
@@ -121,7 +133,8 @@ async def test_default_mock_outputs_validate_for_both_agents() -> None:
         current_concept=concept_payload()
     )
 
-    assert builder_result.output.new_concept.raw_idea == "A raw idea"
+    # The mock keeps the concept unchanged and never returns raw_idea.
+    assert builder_result.output.new_concept.model_dump() == builder_concept_payload()
     assert builder_result.output.unresolved_problems
     assert critic_result.output.criticisms[0].severity.value == "MEDIUM"
     assert [call.role for call in provider.calls] == ["BUILDER", "CRITIC"]
@@ -209,7 +222,11 @@ async def test_builder_runs_individually_and_creates_child_version(
     assert [version["version"] for version in versions.json()] == [0, 1]
     assert versions.json()[1]["parent_version_id"] == v0["id"]
     assert versions.json()[1]["created_by"] == "BUILDER"
-    assert versions.json()[1]["concept"] == builder_payload()["new_concept"]
+    # The persisted version restores the original raw_idea on the server side.
+    assert versions.json()[1]["concept"] == {
+        **builder_payload()["new_concept"],
+        "raw_idea": "A raw idea",
+    }
 
     async with session_maker() as session:
         builder_runs = list(
@@ -221,7 +238,7 @@ async def test_builder_runs_individually_and_creates_child_version(
         )
         criticisms = list((await session.scalars(select(Criticism))).all())
     assert len(builder_runs) == 1
-    assert builder_runs[0].prompt_version == "v3"
+    assert builder_runs[0].prompt_version == BuilderAgent.prompt_version
     assert criticisms == []
 
 
